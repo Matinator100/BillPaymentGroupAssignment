@@ -18,10 +18,13 @@ namespace BillPaymentGroupAssignment
 {
     public partial class PaymentSagicor : System.Web.UI.Page
     {
+        /*global variables to store connection string to database, current user ID as well as Sagicor web service connection*/
         public static string strcon = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         SqlConnection con = new SqlConnection(strcon);
         string CustomerID = System.Web.HttpContext.Current.User.Identity.Name;
         SagicorLifeServices.SagicorLifeConnectSoapClient client = new SagicorLifeServices.SagicorLifeConnectSoapClient();
+
+        /*On Page Load, This function connects to the database, redirects users to login if they are not connected and displays the account information of the linked Sagicor account*/
         protected void Page_Load(object sender, EventArgs e)
         {
             if (System.Web.HttpContext.Current.User == null || !System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
@@ -69,6 +72,7 @@ namespace BillPaymentGroupAssignment
             cmd.Dispose();
         }
 
+        /*This function send the account number and amount to be paid to the Sagicor web service for it to update its system*/
         protected void PayToSagicor(object sender, EventArgs e)
         {
             decimal amount = Convert.ToDecimal(Amount.Text);

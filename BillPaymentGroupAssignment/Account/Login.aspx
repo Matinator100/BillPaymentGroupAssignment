@@ -2,16 +2,16 @@
 
 <asp:Content ID="NavBody" ContentPlaceHolderID="NavbarPlaceHolder" runat="server">
      <li class="nav-item">
-        <a class="nav-link" href="Default.aspx">Home</a>
+        <a class="nav-link" href="../Default.aspx">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="Accounts.aspx">Accounts</a>
+        <a class="nav-link" href="../Accounts.aspx">Accounts</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="About.aspx">About us</a>
+        <a class="nav-link" href="../About.aspx">About us</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="Contact.aspx">Contact us</a>
+        <a class="nav-link" href="../Contact.aspx">Contact us</a>
     </li>
 </asp:Content>
 
@@ -22,7 +22,7 @@
     </div>
     <asp:PlaceHolder runat="server" ID="LoginStatus" Visible="false">
         <p>
-            <asp:Literal runat="server" ID="StatusText" />
+           <span class ="red-text"><asp:Literal runat="server" ID="StatusText" /></span> 
         </p>
         </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="LoginForm" Visible="true">

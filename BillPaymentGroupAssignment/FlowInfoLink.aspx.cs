@@ -17,9 +17,12 @@ namespace BillPaymentGroupAssignment
 {
     public partial class FlowInfoLink : System.Web.UI.Page
     {
+        /*global variables to store connection to database and current user ID*/
         public static string strcon = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         SqlConnection con = new SqlConnection(strcon);
         string CustomerID = System.Web.HttpContext.Current.User.Identity.Name;
+
+        /*On Page Load, The page calls this function which connects to the database*/
         protected void Page_Load(object sender, EventArgs e)
         {
             if (System.Web.HttpContext.Current.User == null || !System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
@@ -34,6 +37,7 @@ namespace BillPaymentGroupAssignment
             con.Open();
         }
 
+        /*This function links the current users JCB acccount a flow account by adding it to the llnked accounts Database after the sFlow werbserice checks if account exists*/
         protected void LinkAccount(object sender, EventArgs e)
         {
             FlowServices.FlowConnectSoapClient client = new FlowServices.FlowConnectSoapClient();

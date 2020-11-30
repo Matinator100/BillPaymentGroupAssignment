@@ -19,6 +19,7 @@ namespace BillPaymentGroupAssignment
     public partial class SiteMaster : MasterPage
     {
 
+        /*On Page Load, This function displays all the navigation bar info for site master. It will be displayed on all pages. It shows the currently logged in user (if they are logged in)*/
         protected void Page_Load(object sender, EventArgs e)
         {
             var userStore = new UserStore<IdentityUser>();
@@ -48,6 +49,7 @@ namespace BillPaymentGroupAssignment
             }
         }
 
+        /*This function allows users to sign out of their accounts*/
         protected void SignOut(object sender, EventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;

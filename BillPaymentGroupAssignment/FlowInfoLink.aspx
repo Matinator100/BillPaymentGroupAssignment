@@ -27,6 +27,7 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="LinkFlowForm" Visible="true">
         <div style="margin-bottom: 10px">
+            <asp:RegularExpressionValidator ID="AccNumValidator" cssClass="full-label-2" runat="server" ControlToValidate="AccountNumber" ForeColor ="Red" ValidationExpression ="^\d+$" ErrorMessage="Account number cannot contain letters or other characters"></asp:RegularExpressionValidator>
             <asp:Label runat="server" AssociatedControlID="AccountNumber">Account Number:</asp:Label>
             <div>
                 <asp:TextBox runat="server" ID="AccountNumber" />
@@ -39,7 +40,8 @@
             </div>
         </div>
          <div style="margin-bottom: 10px">
-            <asp:Label runat="server" AssociatedControlID="AccountPhoneNum">Phone Number associated with account</asp:Label>
+             <asp:RegularExpressionValidator ID="PhoneNumRegularExpressionValidator" cssClass="full-label-2" runat="server" ControlToValidate="AccountPhoneNum" ForeColor ="Red" ValidationExpression ="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" ErrorMessage="Please enter a valid phone number (10 digits)"></asp:RegularExpressionValidator>
+            <asp:Label runat="server" AssociatedControlID="AccountPhoneNum">Phone Number associated with account (10 digits)</asp:Label>
             <div>
                 <asp:TextBox runat="server" ID="AccountPhoneNum"/>
             </div>

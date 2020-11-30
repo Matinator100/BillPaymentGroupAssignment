@@ -16,6 +16,7 @@ namespace BillPaymentGroupAssignment.Account
 {
     public partial class Login : Page
     {
+        /*On page load, this function redirects users to the default page if they are already logged in*/
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -23,10 +24,9 @@ namespace BillPaymentGroupAssignment.Account
             {
                 Response.Redirect("~/Default.aspx", false);
             }
-
-
         }
 
+        /*This function allows users to sign in*/
         protected void SignIn(object sender, EventArgs e)
         {
             var userStore = new UserStore<IdentityUser>();

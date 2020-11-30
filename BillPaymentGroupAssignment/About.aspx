@@ -22,7 +22,7 @@
     </div>
     <div class="border-top border-bottom border-dark mb-5 pl-1">
         <div class ="text-center">
-             <h3 class ="pt-2"></h3>
+             <h3 class ="pt-2"><span>We are an Online portal which supports a new partnership agreement between ATL Auto and NCB that will allow existing NCB customers to log on and apply for preapproved autoloan. We also allow users to link other accounts and make payments to utility companies which will provide more convenience.</span></h3>
         </div>
     </div>
 

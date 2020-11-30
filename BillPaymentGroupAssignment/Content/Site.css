@@ -42,3 +42,13 @@ input[type="select"] {
     width:100%;
     margin-bottom:10px;
 }
+
+.full-label-2 {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.red-text{
+    color:red !important; 
+}

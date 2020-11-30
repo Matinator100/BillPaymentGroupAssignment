@@ -18,16 +18,19 @@ namespace BillPaymentGroupAssignment
 {
     public partial class LinkFlowSagicor : System.Web.UI.Page
     {
+        /*global variables to store connection to database and current user ID and connection to both the flow and Sagicor web service*/
         public static string strcon = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         SqlConnection con = new SqlConnection(strcon);
         string CustomerID = System.Web.HttpContext.Current.User.Identity.Name;
         FlowServices.FlowConnectSoapClient client = new FlowServices.FlowConnectSoapClient();
         SagicorLifeServices.SagicorLifeConnectSoapClient client2 = new SagicorLifeServices.SagicorLifeConnectSoapClient();
+
+        /*On Page Load, The page calls this function which connects to the database, checks if the user is logged in and displays wither the account details for linked accounts or the options to link to that account*/
         protected void Page_Load(object sender, EventArgs e)
         {
             if (System.Web.HttpContext.Current.User == null || !System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                Response.Redirect("~/Account/Login.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Must be logged in the Link Accounts');window.location ='/Account/Login.aspx';", true);
                 return;
             }
             if (con.State == ConnectionState.Open)
@@ -158,16 +161,19 @@ namespace BillPaymentGroupAssignment
             cmd.Dispose();
         }
 
+        /*This function redirects to the FlowInfoLink.aspx page*/
         protected void LoadFlowLinkPage(object sender, EventArgs e)
         {
             Response.Redirect("~/FlowInfoLink.aspx");
         }
 
+        /*This function redirects to the SagicorInfoLink.aspx page*/
         protected void LoadSagicorLinkPage(object sender, EventArgs e)
         {
             Response.Redirect("~/SagicorInfoLink.aspx");
         }
 
+        /*This function deletes linked flow accounts*/
         protected void UnlinkFlow(object sender, EventArgs e)
         {
             SqlCommand cmd = con.CreateCommand();
@@ -177,6 +183,7 @@ namespace BillPaymentGroupAssignment
             Response.Redirect("~/LinkFlowSagicor.aspx");
         }
 
+        /*This function deletes linked Sagicor accounts*/
         protected void UnlinkSagicor(object sender, EventArgs e)
         {
             SqlCommand cmd = con.CreateCommand();
@@ -186,11 +193,13 @@ namespace BillPaymentGroupAssignment
             Response.Redirect("~/LinkFlowSagicor.aspx");
         }
 
+        /*This function redirects to the PaymentFlow.aspx page*/
         protected void PaymentFlow(object sender, EventArgs e)
         {
             Response.Redirect("~/PaymentFlow.aspx");
         }
 
+        /*This function redirects to the PaymentSagicor.aspx page*/
         protected void PaymentSagicor(object sender, EventArgs e)
         {
             Response.Redirect("~/PaymentSagicor.aspx");
