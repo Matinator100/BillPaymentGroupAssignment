@@ -46,6 +46,7 @@ namespace BillPaymentGroupAssignment
                 Button LinkAcc = new Button();
                 LinkAcc.Text = "Link a Flow Acount";
                 LinkAcc.Enabled = true;
+                LinkAcc.CssClass = "btn btn-primary";
                 LinkAcc.Click += this.LoadFlowLinkPage;
                 FlowAccInfoHolder.Controls.Add(LinkAcc);
             }
@@ -66,9 +67,11 @@ namespace BillPaymentGroupAssignment
                 unLinkAccBtn.Text = "Unlink";
                 unLinkAccBtn.Enabled = true;
                 unLinkAccBtn.Click += this.UnlinkFlow;
+                unLinkAccBtn.CssClass = "btn btn-primary mr-4";
                 makePaymentBtn.Text = "Make a Payment";
                 makePaymentBtn.Enabled = true;
                 makePaymentBtn.Click += this.PaymentFlow;
+                makePaymentBtn.CssClass = "btn btn-primary mr-4";
 
                 accountNumber.Text =  "Flow Account Number: "+accountInfo[0];
                 accountNumber.CssClass = "full-label";
@@ -105,6 +108,7 @@ namespace BillPaymentGroupAssignment
                 Button LinkAcc = new Button();
                 LinkAcc.Text = "Link a Sagicor Acount";
                 LinkAcc.Enabled = true;
+                LinkAcc.CssClass = "btn btn-primary";
                 LinkAcc.Click += this.LoadSagicorLinkPage;
                 SagicorAccInfoHolder.Controls.Add(LinkAcc);
             }
@@ -125,9 +129,11 @@ namespace BillPaymentGroupAssignment
                 unLinkAccBtn.Text = "Unlink";
                 unLinkAccBtn.Enabled = true;
                 unLinkAccBtn.Click += this.UnlinkSagicor;
+                unLinkAccBtn.CssClass = "btn btn-primary mr-4";
                 makePaymentBtn.Text = "Make a Payment";
                 makePaymentBtn.Enabled = true;
                 makePaymentBtn.Click += this.PaymentSagicor;
+                makePaymentBtn.CssClass = "btn btn-primary mr-4";
 
                 accountNumber.Text = "Sagicor Account Number: " + accountInfo[0];
                 accountNumber.CssClass = "full-label";

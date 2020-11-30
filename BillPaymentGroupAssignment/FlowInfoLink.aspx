@@ -46,7 +46,7 @@
         </div>
         <div style="margin-bottom: 10px">
             <div>
-                <asp:Button runat="server" OnClick="LinkAccount" Text="Link Flow Account" />
+                <asp:Button CssClass="btn btn-primary" runat="server" OnClick="LinkAccount" Text="Link Flow Account" />
             </div>
         </div>
     </asp:PlaceHolder>

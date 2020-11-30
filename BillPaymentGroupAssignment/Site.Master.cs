@@ -27,12 +27,19 @@ namespace BillPaymentGroupAssignment
             if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 lblUser.Text = "Hello " + System.Web.HttpContext.Current.User.Identity.Name;
+                LoginLink.Visible = false;
             }
             else
             {
                 lblUser.Visible = false;
                 signOutBtn.Visible = false;
                 signOutBtn.Enabled = false;
+                LoginLink.Visible = true;
+            }
+
+            if(string.Compare(Request.Url.LocalPath, "/Account/Login") == 0 || string.Compare(Request.Url.LocalPath, "/Account/Login.aspx") == 0)
+            {
+                LoginLink.CssClass = "nav-link active";
             }
 
             if (string.Compare(Request.Url.LocalPath, "/LinkFlowSagicor") == 0 || string.Compare(Request.Url.LocalPath, "/LinkFlowSagicor.aspx") == 0)

@@ -102,7 +102,7 @@ namespace BillPaymentGroupAssignment
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select AccountBalance from SagicorAccounts where AccountNumber = '" + accNum + "'";
+            cmd.CommandText = "select AccountBalance from SagicorLifeAccounts where AccountNumber = '" + accNum + "'";
             SqlDataReader rdr = cmd.ExecuteReader();
             if (!rdr.Read())
             {
@@ -117,7 +117,7 @@ namespace BillPaymentGroupAssignment
                 decimal currBalance = Convert.ToDecimal(rdr["AccountBalance"]);
                 rdr.Close();
                 cmd.Dispose();
-                string inCmd = "update SagicorAccounts set AccountBalance = @newAccBalance where AccountNumber = '" + accNum + "'";
+                string inCmd = "update SagicorLifeAccounts set AccountBalance = @newAccBalance where AccountNumber = '" + accNum + "'";
                 cmd = new SqlCommand(inCmd, con);
                 cmd.Parameters.AddWithValue("@newAccBalance", (currBalance + amount));
                 cmd.ExecuteNonQuery();

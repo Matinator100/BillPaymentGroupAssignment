@@ -36,12 +36,13 @@
         <div style="margin-top: 10px; margin-bottom: 10px;">
             <asp:Label runat="server" AssociatedControlID="Amount">Payment: </asp:Label>
             <div>
+                <asp:RegularExpressionValidator cssClass="full-label" ID="PaymentRegularExpressionValidator" runat="server" ControlToValidate="Amount" ForeColor ="Red" ValidationExpression ="^[1-9]\d*(\.\d+)?$" ErrorMessage="Value entered is not a valid amount"></asp:RegularExpressionValidator>
                 <asp:TextBox runat="server" ID="Amount"  />
             </div>
         </div>
         <div style="margin-bottom: 10px">
             <div>
-                <asp:Button runat="server" OnClick="PayToSagicor" Text="Pay to your Sagicor Life account" />
+                <asp:Button CssClass="btn btn-primary" runat="server" OnClick="PayToSagicor" Text="Pay to your Sagicor Life account" />
             </div>
         </div>
     </asp:PlaceHolder>

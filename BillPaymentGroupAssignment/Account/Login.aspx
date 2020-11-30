@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="BillPaymentGroupAssignment.Account.Login" Async="true" %>
 
 <asp:Content ID="NavBody" ContentPlaceHolderID="NavbarPlaceHolder" runat="server">
-     <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+     <li class="nav-item">
+        <a class="nav-link" href="Default.aspx">Home</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="Accounts.aspx">Accounts</a>
