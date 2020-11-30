@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Sagicor.com/webservices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://Sagicor.com/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Sagicor.com/webservices">
+      <s:element name="CheckSagicor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userAccNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userAccEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userAccPhoneNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckSagicorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckSagicorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSagicorInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSagicorInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSagicorInfoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PaySagicor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaySagicorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PaySagicorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckSagicorSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckSagicor" />
+  </wsdl:message>
+  <wsdl:message name="CheckSagicorSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckSagicorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSagicorInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSagicorInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetSagicorInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSagicorInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaySagicorSoapIn">
+    <wsdl:part name="parameters" element="tns:PaySagicor" />
+  </wsdl:message>
+  <wsdl:message name="PaySagicorSoapOut">
+    <wsdl:part name="parameters" element="tns:PaySagicorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SagicorLifeConnectSoap">
+    <wsdl:operation name="CheckSagicor">
+      <wsdl:input message="tns:CheckSagicorSoapIn" />
+      <wsdl:output message="tns:CheckSagicorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSagicorInfo">
+      <wsdl:input message="tns:GetSagicorInfoSoapIn" />
+      <wsdl:output message="tns:GetSagicorInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaySagicor">
+      <wsdl:input message="tns:PaySagicorSoapIn" />
+      <wsdl:output message="tns:PaySagicorSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SagicorLifeConnectSoap" type="tns:SagicorLifeConnectSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckSagicor">
+      <soap:operation soapAction="http://Sagicor.com/webservices/CheckSagicor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSagicorInfo">
+      <soap:operation soapAction="http://Sagicor.com/webservices/GetSagicorInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaySagicor">
+      <soap:operation soapAction="http://Sagicor.com/webservices/PaySagicor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SagicorLifeConnectSoap12" type="tns:SagicorLifeConnectSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckSagicor">
+      <soap12:operation soapAction="http://Sagicor.com/webservices/CheckSagicor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSagicorInfo">
+      <soap12:operation soapAction="http://Sagicor.com/webservices/GetSagicorInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaySagicor">
+      <soap12:operation soapAction="http://Sagicor.com/webservices/PaySagicor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SagicorLifeConnect">
+    <wsdl:port name="SagicorLifeConnectSoap" binding="tns:SagicorLifeConnectSoap">
+      <soap:address location="https://localhost:44363/SagicorLifeConnect.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SagicorLifeConnectSoap12" binding="tns:SagicorLifeConnectSoap12">
+      <soap12:address location="https://localhost:44363/SagicorLifeConnect.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

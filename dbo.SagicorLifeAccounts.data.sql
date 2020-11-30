@@ -1,0 +1,5 @@
+﻿insert into dbo.SagicorLifeAccounts values (1004004, 'Matthew Willams', 'will.matt30@yahoo.com', 8764362337, 20000.00)
+insert into dbo.SagicorLifeAccounts values (1004008, 'Charles Dunkley', 'charliechar@gmail.com', 8765436432, 100000.00)
+insert into dbo.SagicorLifeAccounts values (1004012, 'Anotonio Lewis', 'thetonio@yahoo.com', 8763376512, 562.00)
+insert into dbo.SagicorLifeAccounts values (1004016, 'Faruja Derpinderdeep', 'fardeep12@yahoo.com', 8768753256, 76423.00)
+insert into dbo.SagicorLifeAccounts values (1004020, 'Stephen Powell', 'stestepowpow@outlook.com', 8769586345, 55555.00)

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Flow.com/webservices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://Flow.com/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Flow.com/webservices">
+      <s:element name="CheckFlow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userAccNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userAccEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userAccPhoneNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckFlowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckFlowResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlowInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlowInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFlowInfoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PayFlow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayFlowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PayFlowResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckFlowSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckFlow" />
+  </wsdl:message>
+  <wsdl:message name="CheckFlowSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckFlowResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlowInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlowInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFlowInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlowInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayFlowSoapIn">
+    <wsdl:part name="parameters" element="tns:PayFlow" />
+  </wsdl:message>
+  <wsdl:message name="PayFlowSoapOut">
+    <wsdl:part name="parameters" element="tns:PayFlowResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FlowConnectSoap">
+    <wsdl:operation name="CheckFlow">
+      <wsdl:input message="tns:CheckFlowSoapIn" />
+      <wsdl:output message="tns:CheckFlowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlowInfo">
+      <wsdl:input message="tns:GetFlowInfoSoapIn" />
+      <wsdl:output message="tns:GetFlowInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayFlow">
+      <wsdl:input message="tns:PayFlowSoapIn" />
+      <wsdl:output message="tns:PayFlowSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FlowConnectSoap" type="tns:FlowConnectSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckFlow">
+      <soap:operation soapAction="http://Flow.com/webservices/CheckFlow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlowInfo">
+      <soap:operation soapAction="http://Flow.com/webservices/GetFlowInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayFlow">
+      <soap:operation soapAction="http://Flow.com/webservices/PayFlow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FlowConnectSoap12" type="tns:FlowConnectSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckFlow">
+      <soap12:operation soapAction="http://Flow.com/webservices/CheckFlow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlowInfo">
+      <soap12:operation soapAction="http://Flow.com/webservices/GetFlowInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayFlow">
+      <soap12:operation soapAction="http://Flow.com/webservices/PayFlow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlowConnect">
+    <wsdl:port name="FlowConnectSoap" binding="tns:FlowConnectSoap">
+      <soap:address location="https://localhost:44363/FlowConnect.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FlowConnectSoap12" binding="tns:FlowConnectSoap12">
+      <soap12:address location="https://localhost:44363/FlowConnect.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
